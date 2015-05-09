@@ -1,0 +1,23 @@
+<button class="btn btn-default" id="toggle_add_button" ng-click="show_add_button = !show_add_button" data-toggle="button">+</button>
+
+<div class="well well-sm" style="" ng-show="show_add_button">
+
+    <form class="form" novalidate>
+
+          <div class="form-group">
+            <!--<label for="message-text" class="control-label">Quote:</label>-->
+            <textarea class="form-control" id="message-text" ng-model="cur_item.text" placeholder="quote..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <!--<label for="recipient-name" class="control-label">Author:</label>-->
+            <input type="text" class="form-control" id="recipient-name" ng-model="cur_item.author" placeholder="author...">
+          </div>
+
+        <div class="form-group">
+            <button type="button" id="reset_add_form" class="btn btn-default" ng-click="cur_item = null">reset</button>
+            <button type="button" class="btn btn-primary" ng-click="addQuote(cur_item); cur_item = null">save</button>
+        </div>
+    </form>
+
+</div>

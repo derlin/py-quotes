@@ -1,0 +1,19 @@
+.author {
+    margin-left: 10%;
+    display: inline-block;
+    font-size: .8em;
+}
+
+
+blockquote {
+  float: left;
+  margin: 10px;
+}
+
+blockquote button {
+    margin-left:10px;
+}
+
+div.quote {
+    margin-right: 30px;
+}
