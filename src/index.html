@@ -37,9 +37,11 @@
             </div>
         </div>
 
-        <div class="row">
+        <div ng-include src="'edit.partial'"></div>
+
             <div ng-repeat="quote in qquotes | filter: search">
-                <blockquote>
+            <div ng-if="quote.index % 3 == 0" class="row">
+                <blockquote class="col-sm-4 col-xs-12">
 
                     <button type="button" class="close" aria-label="Close" ng-click="deleteQuote(quote)"><span aria-hidden="true">&times;</span></button>
                     <button type="button" class="close" aria-label="Edit" ng-click="showEditModal(quote)"><span aria-hidden="true"></span>&#9771</button>
@@ -48,11 +50,17 @@
                     <div class="author">{{quote['author']}} ({{quote['date'] }})</div>
 
                 </blockquote>
-
             </div>
-        </div>
+                <blockquote ng-if="quote.index % 3 != 0" class="col-sm-4 col-xs-12">
 
-        <div ng-include src="'edit.partial'"></div>
+                    <button type="button" class="close" aria-label="Close" ng-click="deleteQuote(quote)"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" aria-label="Edit" ng-click="showEditModal(quote)"><span aria-hidden="true"></span>&#9771</button>
+
+                    <div  class="quote">{{quote['quote']}}</div>
+                    <div class="author">{{quote['author']}} ({{quote['date'] }})</div>
+
+                </blockquote>
+        </div>
 
     </div>
 
