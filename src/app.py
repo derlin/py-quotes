@@ -113,7 +113,7 @@ class StringGeneratorWebService(object):
 
         cl = cherrypy.request.headers['Content-Length']
         rawbody = cherrypy.request.body.read(int(cl))
-        body = simplejson.loads(rawbody)
+        body = json.loads(rawbody)
 
         conn = sqlite3.connect(DB_STRING)
         c = conn.cursor()

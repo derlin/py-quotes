@@ -28,10 +28,11 @@ app.controller('QuotesController',
                             index: index
                         };
 
-                        $scope.qquotes.push(elt)
+                        $scope.qquotes.push(elt);
                     }
 
                     $scope.quotes.forEach(logArrayElements);
+                    $scope.getRandomQuote();
                 });
             };
 
@@ -78,6 +79,11 @@ app.controller('QuotesController',
 
                  Factory.update(quote, callback);
 
+            };
+
+            $scope.getRandomQuote = function(){
+                var index = Math.floor(Math.random() * $scope.quotes.length);
+                $scope.randomQuote = $scope.qquotes[index];
             };
 
             $scope.refresh();

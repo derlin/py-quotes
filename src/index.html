@@ -10,7 +10,7 @@
 
 
 <body ng-controller="QuotesController">
-
+    <!--navigation-->
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -24,12 +24,24 @@
       </div>
     </nav>
 
+    <!--main body-->
     <div id="main" class="container container-fluid">
 
+        <!--add quote well-->
         <div class="row">
             <div class="col-md-12" ng-include src="'/add.partial'" style="text-align:right"></div>
         </div>
 
+        <!--random quote-->
+        <div class="row">
+            <blockquote class="random-quote" ng-click="getRandomQuote()">
+                    <div  class="quote" ng-repeat="line in (randomQuote['quote'] | newlines) track by $index">{{line}}<br></div>
+                    <div class="author">{{randomQuote['author']}} ({{randomQuote['date'] }})</div>
+
+                </blockquote>
+        </div>
+
+        <!--filter form-->
         <div class="row" style="margin-bottom: 20px">
             <label for="filterall" class="col-md-1 control-label">Filter</label>
             <div class="col-md-10">
@@ -37,6 +49,8 @@
             </div>
         </div>
 
+
+        <!--quotes-->
         <div class="row">
             <div ng-repeat="quote in qquotes | multiWordFilter: search">
                 
