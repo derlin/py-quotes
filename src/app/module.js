@@ -7,6 +7,7 @@
 angular.module('quotes',
     [
         'quotes.service',
-        'quotes.controller'
+        'quotes.controller',
+        'quotes.filter'
      ]
 );

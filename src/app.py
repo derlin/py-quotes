@@ -230,6 +230,11 @@ if __name__ == '__main__':
             'tools.staticfile.filename': "app/controller.js",
         },
 
+        '/fltr.js': {
+            'tools.staticfile.on': True,
+            'tools.staticfile.filename': "app/filter.js",
+        },
+
         '/srv.js': {
             'tools.staticfile.on': True,
             'tools.staticfile.filename': "app/service.js",

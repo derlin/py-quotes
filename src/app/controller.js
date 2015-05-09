@@ -7,6 +7,7 @@
 
 var app = angular.module('quotes.controller', []);
 
+
 app.controller('QuotesController',
         ['$scope', 'QuotesFactory', // dependancy injection
         function ($scope, Factory) { // constructor: parameters must match dependancies !
@@ -27,7 +28,6 @@ app.controller('QuotesController',
                             index: index
                         };
 
-                        console.log(elt);
                         $scope.qquotes.push(elt)
                     }
 
