@@ -38,7 +38,7 @@ class StringGenerator(object):
         res = []
 
         for r in result:
-            a = {'author': r[1], 'quote': r[2]}
+            a = {'author': r[1], 'quote': r[2], 'timestamp': r[0]}
             res.append(a)
             # a[0] = a[0].split(".")[0]
 
@@ -155,6 +155,35 @@ def cleanup_database():
     with sqlite3.connect(DB_STRING) as con:
         con.execute("DROP TABLE quotes")
 
+def populate_database(path):
+    """
+    Populate the database with data from a json file dump
+    """
+    if path is None or not os.path.exists(path):
+        print("%s does not exist !!" % (path,))
+        return
+
+    json_data = open(path).read()
+    data = json.loads(json_data)
+    print(data)
+
+    conn = sqlite3.connect(DB_STRING)
+    c = conn.cursor()
+
+    for d in data:
+
+        try:
+            c.execute('insert into quotes values(?, ?, ?)', [d['timestamp'], d['author'], d['text']])
+            conn.commit()
+
+        except Exception as e:
+            print(e)
+
+    c.close();
+    conn.close();
+
+    print("DONE.")
+
 
 if __name__ == '__main__':
     conf = {
@@ -254,7 +283,7 @@ if __name__ == '__main__':
     cherrypy.engine.subscribe('start', setup_database)
     # cherrypy.engine.subscribe('stop', cleanup_database)
 
-print(os.path.dirname(os.path.abspath(__file__)))
-webapp = StringGenerator()
-webapp.generator = StringGeneratorWebService()
-cherrypy.quickstart(webapp, config=conf)
+    print(os.path.dirname(os.path.abspath(__file__)))
+    webapp = StringGenerator()
+    webapp.generator = StringGeneratorWebService()
+    cherrypy.quickstart(webapp, config=conf)
