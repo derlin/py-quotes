@@ -8,8 +8,8 @@ var app = angular.module('quotes.filter', []);
 app.filter("multiWordFilter", function($filter){
     /* filter the quotes based on multiple words (not necessarily the exact text) */
     return function(inputArray, searchText){
-        console.log(searchText);
         if(searchText == undefined) return inputArray;
+        console.log(searchText);
         var wordArray = searchText['$'].toLowerCase().split(/\s+/);
         var wordCount = wordArray.length;
         for(var i=0;i<wordCount;i++){
@@ -22,6 +22,6 @@ app.filter("multiWordFilter", function($filter){
 app.filter('newlines', function() {
   // see http://stackoverflow.com/questions/13964735/angularjs-newline-filter-with-no-other-html
   return function(text) {
-    return text.split(/\n/g);
+    return text == undefined ? text : text.split(/\n/g);
   };
 });

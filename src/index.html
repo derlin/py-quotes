@@ -3,6 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>quotes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="bt.css" rel="stylesheet" type="text/css" />
     <link href="app.css" rel="stylesheet" type="text/css" />
 </head>
@@ -12,7 +13,7 @@
 <body ng-controller="QuotesController">
     <!--navigation-->
     <nav class="navbar navbar-default">
-      <div class="container-fluid">
+      <div class="container container-fluid">
         <div class="navbar-header">
           <a class="navbar-brand" href="#">
             MyQuotes
@@ -35,8 +36,8 @@
         <!--random quote-->
         <div class="row">
             <blockquote class="random-quote" ng-click="getRandomQuote()">
-                    <div  class="quote" ng-repeat="line in (randomQuote['quote'] | newlines) track by $index">{{line}}<br></div>
-                    <div class="author">{{randomQuote['author']}} ({{randomQuote['date'] }})</div>
+                    <p  class="quote" ng-repeat="line in (randomQuote['quote'] | newlines) track by $index">{{line}}<br></p>
+                    <footer class="author">{{randomQuote['author']}} ({{randomQuote['date'] }})</footer>
 
                 </blockquote>
         </div>
@@ -59,8 +60,8 @@
                     <button type="button" class="close" aria-label="Close" ng-click="deleteQuote(quote)"><span aria-hidden="true">&times;</span></button>
                     <button type="button" class="close" aria-label="Edit" ng-click="showEditModal(quote)"><span aria-hidden="true"></span>&#9771</button>
 
-                    <div  class="quote" ng-repeat="line in (quote['quote'] | newlines) track by $index">{{line}}<br></div>
-                    <div class="author">{{quote['author']}} ({{quote['date'] }})</div>
+                    <p  class="quote" ng-repeat="line in (quote['quote'] | newlines) track by $index">{{line}}<br></p>
+                    <footer class="author">{{quote['author']}} ({{quote['date'] }})</footer>
 
                 </blockquote>
 

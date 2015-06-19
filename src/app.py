@@ -189,8 +189,8 @@ if __name__ == '__main__':
     conf = {
 
         'global': {
-            # 'server.socket_host': "127.0.0.1",
-            # 'server.socket_port': 14000,
+            'server.socket_host': "0.0.0.0",
+            'server.socket_port': 14000,
             'tools.staticfile.root': os.path.dirname(os.path.abspath(__file__)),
             'tools.encode.on': True,
             # 'tools.encode.encoding': "utf-8",
@@ -279,7 +279,7 @@ if __name__ == '__main__':
             'tools.staticfile.filename': "html/modal.html",
         }
     }
-
+    cherrypy.process.plugins.Daemonizer(cherrypy.engine).subscribe()
     cherrypy.engine.subscribe('start', setup_database)
     # cherrypy.engine.subscribe('stop', cleanup_database)
 
