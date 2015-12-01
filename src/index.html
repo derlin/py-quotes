@@ -26,12 +26,13 @@
     </nav>
 
     <!--main body-->
-    <div id="main" class="container container-fluid">
+    <div class="container container-fluid">
 
         <!--add quote well-->
         <div class="row">
             <div class="col-md-12" ng-include src="'/add.partial'" style="text-align:right"></div>
         </div>
+
 
         <!--random quote-->
         <div class="row">
@@ -41,6 +42,7 @@
 
                 </blockquote>
         </div>
+
 
         <!--filter form-->
         <div class="row" style="margin-bottom: 20px">
@@ -53,8 +55,8 @@
 
         <!--quotes-->
         <div class="row">
-            <div ng-repeat="quote in qquotes | multiWordFilter: search">
-                
+            <div ng-repeat="quote in qquotes | multiWordFilter: search" class="quotes-container">
+
                 <blockquote>
 
                     <button type="button" class="close" aria-label="Close" ng-click="deleteQuote(quote)"><span aria-hidden="true">&times;</span></button>
@@ -65,11 +67,11 @@
 
                 </blockquote>
 
-            </div>
         </div>
 
         <div ng-include src="'edit.partial'"></div>
 
+        </div>
     </div>
 
 
